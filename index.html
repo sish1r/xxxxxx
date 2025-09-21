@@ -1,277 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sishir | Portfolio</title>
-  <style>
-    :root {
-      --bg-light: #f9fafb;
-      --bg-dark: #111827;
-      --text-light: #111827;
-      --text-dark: #f9fafb;
-      --accent-light: #2563eb;
-      --accent-dark: #60a5fa;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sishir Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
-    [data-theme='light'] {
-      --bg: var(--bg-light);
-      --text: var(--text-light);
-      --accent: var(--accent-light);
-    }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
 
-    [data-theme='dark'] {
-      --bg: var(--bg-dark);
-      --text: var(--text-dark);
-      --accent: var(--accent-dark);
-    }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: #1e293b;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        header h1 {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      transition: all 0.3s ease;
-    }
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
 
-    header {
-      background: var(--bg);
-      color: var(--text);
-      padding: 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--accent);
-    }
+        nav a:hover {
+            color: #3b82f6;
+        }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 8px;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
 
-    header p {
-      font-size: 1.1rem;
-      color: var(--accent);
-    }
+        /* About Me */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
 
-    nav {
-      margin-top: 10px;
-    }
+        .about img {
+            width: 180px;
+            border-radius: 12px;
+        }
 
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+        .about-content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
 
-    nav a:hover {
-      color: var(--accent);
-    }
+        .about-content p {
+            margin-bottom: 1rem;
+        }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+        .about-content strong {
+            display: inline-block;
+            width: 120px;
+        }
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-      color: var(--text);
-      border-left: 5px solid var(--accent);
-      padding-left: 10px;
-    }
+        .btn-download {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
 
-    .about p, .contact p {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-    }
+        /* Skills */
+        .skills {
+            margin-bottom: 3rem;
+        }
 
-    .skills ul {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-      list-style: none;
-    }
+        .skills h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
 
-    .skills li {
-      background: var(--accent);
-      color: var(--text-dark);
-      padding: 12px;
-      text-align: center;
-      border-radius: 10px;
-      font-weight: bold;
-      transition: transform 0.2s ease;
-    }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
 
-    .skills li:hover {
-      transform: translateY(-5px) scale(1.05);
-    }
+        .skill {
+            background-color: #1e293b;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-    .projects .card {
-      background: var(--bg);
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        /* Projects */
+        .projects h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
 
-    .projects .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
 
-    .projects h3 {
-      margin-bottom: 10px;
-      color: var(--accent);
-    }
+        .project {
+            background-color: #1e293b;
+            padding: 1rem;
+            border-radius: 8px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: var(--bg);
-      border-top: 1px solid var(--accent);
-    }
+        .project button {
+            margin-top: 0.75rem;
+            padding: 0.5rem 1rem;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
 
-    footer a {
-      color: var(--accent);
-      margin: 0 8px;
-      text-decoration: none;
-    }
+        /* Contact */
+        .contact h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
 
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--accent);
-      color: var(--text-dark);
-      padding: 10px 15px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .theme-toggle:hover {
-      background: var(--text);
-      color: var(--accent);
-    }
-
-    .resume-btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: var(--accent);
-      color: var(--text-dark);
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-
-    .resume-btn:hover {
-      transform: scale(1.05);
-    }
-
-    @media(max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      section h2 {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+    </style>
 </head>
-<body data-theme="light">
-  <button class="theme-toggle">Toggle Dark/Light Mode</button>
-  <header>
-    <h1>Sishir</h1>
-    <p>Frontend Developer | JavaScript Enthusiast</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<body>
+    <header>
+        <h1>Sishir</h1>
+        <nav>
+            <a href="#about">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm <strong>Sishir</strong>, a passionate developer who loves building modern, user-friendly web applications. I enjoy learning new technologies and solving challenging problems.</p>
-    <p><strong>Graduation:</strong> Expected 2026</p>
-    <p><strong>College:</strong> Garden City University</p>
-    <a href="#" class="resume-btn">Download Resume</a>
-  </section>
+    <div class="container">
+        <!-- About Me -->
+        <section id="about" class="about">
+            <img src="profile.png" alt="Profile Image">
+            <div class="about-content">
+                <h2>ABOUT ME</h2>
+                <p>Hello! I'm Sishir, a web developer with experience in making cool projects, problem solving, and AI experimentation.</p>
+                <p><strong>College:</strong> Geston City University</p>
+                <p><strong>Duration:</strong> Elserwest days</p>
+                <a href="#" class="btn-download">DOWNLOAD RESUME</a>
+            </div>
+        </section>
 
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Web Development</li>
-      <li>DSA</li>
-      <li>Python</li>
-      <li>AI/ML</li>
-      <li>Java</li>
-      <li>Git</li>
-      <li>Docker</li>
-      <li>dcn</li>
+        <!-- Skills -->
+        <section class="skills">
+            <h2>SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill">Web Development</div>
+                <div class="skill">DSA</div>
+                <div class="skill">Python</div>
+                <div class="skill">AUML</div>
+                <div class="skill">Jown</div>
+                <div class="skill">...</div>
+            </div>
+        </section>
 
-    </ul>
-  </section>
+        <!-- Projects -->
+        <section id="projects" class="projects">
+            <h2>PROJECTS</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <h3>Project 1</h3>
+                    <p>A few description of your project</p>
+                    <button>VIEW PROJECT</button>
+                </div>
+                <div class="project">
+                    <h3>Project 2</h3>
+                    <p>A few description of your project</p>
+                    <button>VIEW PROJECT</button>
+                </div>
+            </div>
+        </section>
 
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="card">
-      <h3>Portfolio Website</h3>
-      <p>A responsive personal website to showcase my projects and skills using HTML, CSS, and JavaScript.</p>
+        <!-- Contact -->
+        <section id="contact" class="contact">
+            <h2>CONTACT</h2>
+            <p>Phone: +91 123 456 7890</p>
+            <p>Email: sishir@example.com</p>
+        </section>
     </div>
-    <div class="card">
-      <h3>Weather App</h3>
-      <p>A simple weather forecast app that fetches real-time weather data using an API and displays it cleanly.</p>
-    </div>
-    <div class="card">
-      <h3>Todo List</h3>
-      <p>A task management app built with JavaScript to keep track of daily activities with add/remove features.</p>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:sishir.dev@example.com">sishir.dev@example.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/sishir" target="_blank">linkedin.com/in/sishir</a></p>
-    <p>GitHub: <a href="https://github.com/sishir" target="_blank">github.com/sishir</a></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Sishir. Built with ❤️ using HTML, CSS, and JavaScript.</p>
-  </footer>
-
-  <script>
-    // Smooth scroll
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    // Dark/Light mode toggle
-    const toggle = document.querySelector('.theme-toggle');
-    toggle.addEventListener('click', () => {
-      const body = document.body;
-      body.dataset.theme = body.dataset.theme === 'light' ? 'dark' : 'light';
-    });
-  </script>
 </body>
 </html>
